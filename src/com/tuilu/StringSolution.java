@@ -14,12 +14,12 @@ public class StringSolution {
      */
     public boolean stringPermutation(String A, String B) {
         // Write your code here
-        if(A.length()!=B.length())return false;
+        if (A.length() != B.length()) return false;
         char[] arrayA = A.toCharArray();
         char[] arrayB = B.toCharArray();
         Arrays.sort(arrayA);
         Arrays.sort(arrayB);
-        return Arrays.equals(arrayA,arrayB);
+        return Arrays.equals(arrayA, arrayB);
     }
 
     /**
@@ -67,8 +67,8 @@ public class StringSolution {
         List<List<String>> resultList = new ArrayList<>();
         tempList.add(beginWord);
         Iterator it = wordList.iterator();
-        while(it.hasNext()){
-            String a = (String)it.next();
+        while (it.hasNext()) {
+            String a = (String) it.next();
             System.out.println(a);
         }
 
@@ -77,24 +77,36 @@ public class StringSolution {
 
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
-        for(int i=0;i<s.length();i++){
-            if(!stack.empty()&&isMatch(stack.peek(),s.charAt(i)))stack.pop();
+        for (int i = 0; i < s.length(); i++) {
+            if (!stack.empty() && isMatch(stack.peek(), s.charAt(i))) stack.pop();
             else stack.push(s.charAt(i));
         }
         return stack.empty();
     }
-    public boolean isMatch(char a,char b){
-        return (a=='('&&b==')')||(a=='['&&b==']')||(a=='{'&&b=='}');
+
+    public boolean isMatch(char a, char b) {
+        return (a == '(' && b == ')') || (a == '[' && b == ']') || (a == '{' && b == '}');
     }
-    public boolean isPalidrome(String s){
-        String s2 = s.replaceAll("[^\\p{Alnum}]","").toLowerCase();
+
+    public boolean isPalidrome(String s) {
+        String s2 = s.replaceAll("[^\\p{Alnum}]", "").toLowerCase();
         return new StringBuilder(s2).reverse().toString().equals(s2);
     }
+
     public boolean isIsomorphic(String s, String t) {
         Map m = new HashMap();
-        for (Integer i=0; i<s.length(); ++i)
-            if (m.put(s.charAt(i), i) != m.put(t.charAt(i)+"", i))
+        for (Integer i = 0; i < s.length(); ++i)
+            if (m.put(s.charAt(i), i) != m.put(t.charAt(i) + "", i))
                 return false;
         return true;
+    }
+
+    public String minWindow(String s, String t) {
+        return "";
+    }
+
+    public boolean isInterleave(String s1, String s2, String s3) {
+
+        return false;
     }
 }

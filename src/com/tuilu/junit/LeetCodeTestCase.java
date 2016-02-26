@@ -1,6 +1,8 @@
 package com.tuilu.junit;
 
 import com.tuilu.ArraySolution;
+import com.tuilu.ListNode;
+import com.tuilu.ListNodeSolution;
 import com.tuilu.StringSolution;
 import org.junit.Test;
 
@@ -45,5 +47,21 @@ public class LeetCodeTestCase {
     public void testIsIsomorphic() {
         StringSolution solution = new StringSolution();
         assert (true == solution.isIsomorphic("bcc", "ess"));
+    }
+
+    @Test
+    public void testAddTwoNumber() {
+        ListNodeSolution solution = new ListNodeSolution();
+        ListNode l1 = new ListNode(0);
+        ListNode l12 = new ListNode(2);
+//        l1.next = l12;
+        ListNode l2 = new ListNode(0);
+        ListNode l22 = new ListNode(3);
+//        l2.next = l22;
+        ListNode node = solution.addTwoNumbers(l1, l2);
+        while(node!=null){
+            System.out.println(node.val);
+            node = node.next;
+        }
     }
 }

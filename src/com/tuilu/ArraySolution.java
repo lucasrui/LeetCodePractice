@@ -1,5 +1,7 @@
 package com.tuilu;
 
+import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2016/2/18.
  */
@@ -26,5 +28,10 @@ public class ArraySolution {
         }
 
         return output;
+    }
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = {1,2};
+
+        return result;
     }
 }

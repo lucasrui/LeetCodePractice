@@ -86,8 +86,8 @@ public class ListNodeSolution {
     }
 
     /**
-     * @param  l1 is the head of the linked list
-     * @param  l2 is the head of the linked list
+     * @param l1 is the head of the linked list
+     * @param l2 is the head of the linked list
      * @return: ListNode head of linked list
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -111,20 +111,17 @@ public class ListNodeSolution {
             }
         }
         return head;*/
-        if(l1 == null)
+        if (l1 == null)
             return l2;
-        else if(l2 == null)
+        else if (l2 == null)
             return l1;
 
         ListNode pMergedHead = null;
 
-        if(l1.val<l2.val)
-        {
+        if (l1.val < l2.val) {
             pMergedHead = l1;
             pMergedHead.next = mergeTwoLists(l1.next, l2);
-        }
-        else
-        {
+        } else {
             pMergedHead = l2;
             pMergedHead.next = mergeTwoLists(l1, l2.next);
         }
@@ -137,6 +134,24 @@ public class ListNodeSolution {
             System.out.println(list.val);
             list = list.next;
         }
+    }
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode result = new ListNode(0);
+        ListNode p1 = l1, p2 = l2, p = result;
+        int carry = 0;
+        while (p1 != null || p2 != null) {
+            int add1 = p1 == null ? 0 : p1.val;
+            int add2 = p2 == null ? 0 : p2.val;
+            int sum = add1 + add2 + carry;
+            p.next = new ListNode(sum % 10);
+            carry = sum / 10;
+            p = p.next;
+            if (p1 != null) { p1 = p1.next; }
+            if (p2 != null) { p2 = p2.next; }
+        }
+        if (carry == 1) { p.next = new ListNode(1); }
+        return result.next;
     }
 }
 
