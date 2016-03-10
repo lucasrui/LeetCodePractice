@@ -109,4 +109,60 @@ public class StringSolution {
 
         return false;
     }
+
+    /*
+    Additive number is a string whose digits can form additive sequence.
+    A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.*/
+    public boolean isAdditiveNumber(String num) {
+        int[] nums = new int[num.length()];
+        for (int i = 0; i < num.length(); i++) {
+            nums[i] = num.charAt(i) - 48;
+        }
+        int alength = 1;
+        int blength = 1;
+        int tag;
+        while (alength * 2 < num.length()) {
+            if (nums[0] == 0 && alength > 1) return false;
+            if (nums[alength] == 0 && blength > 1) {
+                alength++;
+                continue;
+            }
+            tag = alength + blength;
+            long a = 0;
+            long b = 0;
+            for (int i = 0; i < alength; i++) {
+                a = a * 10 + nums[i];
+            }
+            for (int i = 0; i < blength; i++) {
+                b = b * 10 + nums[i + alength];
+            }
+            int clength = 1;
+            while (tag + clength - 1 < num.length()) {
+                if (nums[tag] == 0 && clength > 1) {
+                    break;
+                }
+                long c = 0;
+                for (int i = 0; i < clength; i++) {
+                    c = c * 10 + nums[i + tag];
+                }
+                if (a + b > c) {
+                    clength++;
+                } else if (a + b == c) {
+                    a = b;
+                    b = c;
+                    tag += clength;
+                    clength = 1;
+                    if (tag == num.length()) return true;
+                } else {
+                    break;
+                }
+            }
+            blength++;
+            if (blength * 2 > num.length() || alength + blength == num.length()) {
+                blength = 1;
+                alength++;
+            }
+        }
+        return false;
+    }
 }
